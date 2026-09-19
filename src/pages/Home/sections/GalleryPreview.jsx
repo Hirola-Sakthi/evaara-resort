@@ -15,9 +15,9 @@ const galleryImages = [
 
 function GalleryPreview() {
   return (
-    <section className="overflow-hidden bg-[#F3F0E8] px-5 py-20 text-[#102C26] sm:px-8 md:py-24 lg:px-12">
+    <section className="overflow-hidden bg-[#F3F0E8] px-5 py-8 text-[#102C26] sm:px-8 md:py-10 lg:px-12">
       <div className="mx-auto max-w-[1320px]">
-        <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div className="mb-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <motion.div
             initial={{ opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -36,7 +36,7 @@ function GalleryPreview() {
             viewport={{ once: true }}
             whileHover={{ x: 4 }}
             transition={{ duration: 0.45 }}
-            className="evaara-link group"
+            className="evaara-text-link group"
           >
             View Gallery
             <ArrowUpRight
@@ -69,9 +69,6 @@ function GalleryPreview() {
                 className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#071A17]/55 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-95" />
-              <span className="absolute bottom-5 left-5 text-[10px] font-bold uppercase tracking-[0.28em] text-[#F6F1E7]/80">
-                {String(index + 1).padStart(2, '0')}
-              </span>
             </motion.a>
           ))}
         </div>

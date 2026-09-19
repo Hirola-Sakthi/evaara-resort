@@ -45,9 +45,9 @@ const activityCards = [
 
 function ActivityGrid() {
   return (
-    <section className="bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
+    <section className="bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
       <div className="mx-auto max-w-7xl">
-        <div data-scroll-reveal className="mb-12 grid gap-7 lg:grid-cols-[0.85fr_1.15fr]">
+        <div data-scroll-reveal className="mb-6 grid gap-7 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <p className="evaara-eyebrow mb-4">Curated Experiences</p>
             <h2 className="evaara-title text-4xl sm:text-5xl md:text-6xl">
@@ -66,7 +66,7 @@ function ActivityGrid() {
             <article
               data-scroll-card
               key={activity.title}
-              className="group relative min-h-[420px] overflow-hidden rounded-[24px] bg-[#071A17] shadow-xl shadow-[#102C26]/10"
+              className="group relative min-h-[340px] overflow-hidden rounded-[22px] bg-[#071A17] shadow-xl shadow-[#102C26]/10 sm:min-h-[420px] sm:rounded-[24px]"
             >
               <img
                 src={activity.image}

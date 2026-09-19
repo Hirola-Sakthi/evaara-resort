@@ -21,14 +21,14 @@ const amenities = [
 
 function ResortAmenities() {
   return (
-    <section className="overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
+    <section className="overflow-hidden bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
       <div className="mx-auto max-w-[1280px]">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="grid gap-8 border-y border-[#102C26]/10 py-10 lg:grid-cols-[0.8fr_1.2fr]"
+          className="grid gap-8 border-y border-[#102C26]/10 py-8 lg:grid-cols-[0.8fr_1.2fr]"
         >
           <div>
             <p className="evaara-eyebrow mb-5">Resort Amenities</p>
@@ -60,7 +60,7 @@ function ResortAmenities() {
                 }}
                 className="group min-h-[210px] border-b border-[#102C26]/10 px-1 py-7 sm:px-6 lg:border-r lg:last:border-r-0"
               >
-                <div className="mb-8 flex items-center justify-between">
+                <div className="mb-6 flex items-center justify-between">
                   <Icon
                     size={25}
                     strokeWidth={1.45}

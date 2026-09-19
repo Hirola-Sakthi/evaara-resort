@@ -1,6 +1,7 @@
 import { useLayoutEffect, useState } from 'react'
 import './App.css'
 import AnimatedPage from './components/AnimatedPage'
+import FloatingContact from './components/FloatingContact'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import About from './pages/About/index.jsx'
@@ -128,6 +129,7 @@ function App() {
         <Page {...pageProps} />
       </AnimatedPage>
       <Footer />
+      <FloatingContact />
     </main>
   )
 }

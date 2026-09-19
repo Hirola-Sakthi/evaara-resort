@@ -7,9 +7,9 @@ function BlogGrid() {
   const [featuredPost, ...posts] = blogPosts
 
   return (
-    <section className="bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
+    <section className="bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
       <div className="mx-auto max-w-7xl">
-        <div data-scroll-reveal className="mb-12 grid gap-7 lg:grid-cols-[0.82fr_1.18fr]">
+        <div data-scroll-reveal className="mb-6 grid gap-7 lg:grid-cols-[0.82fr_1.18fr]">
           <div>
             <p className="evaara-eyebrow mb-4">Editorial Journal</p>
             <h2 className="evaara-title text-4xl sm:text-5xl md:text-6xl">
@@ -22,7 +22,7 @@ function BlogGrid() {
           </p>
         </div>
 
-        <a href={`/blog/${featuredPost.slug}`} data-scroll-reveal className="group mb-12 grid overflow-hidden rounded-[24px] bg-white shadow-xl shadow-[#102C26]/8 lg:grid-cols-[1.1fr_0.9fr]">
+        <a href={`/blog/${featuredPost.slug}`} data-scroll-reveal className="group mb-6 grid overflow-hidden rounded-[24px] bg-white shadow-xl shadow-[#102C26]/8 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="relative min-h-[380px] overflow-hidden">
             <img
               src={getBlogImage(featuredPost.image)}
@@ -32,7 +32,7 @@ function BlogGrid() {
           </div>
           <article className="flex flex-col justify-center p-7 md:p-10">
             <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#536B50]">
-              Featured / {featuredPost.category} / {featuredPost.date}
+              {featuredPost.date}
             </p>
             <h3 className="evaara-title mt-4 text-4xl md:text-5xl">
               {featuredPost.title}
@@ -68,7 +68,7 @@ function BlogGrid() {
                 />
               </div>
               <p className="mt-5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#536B50]">
-                {post.category} / {post.date}
+                {post.date}
               </p>
               <h3 className="mt-3 text-2xl font-light leading-tight tracking-[-0.035em]">
                 {post.title}

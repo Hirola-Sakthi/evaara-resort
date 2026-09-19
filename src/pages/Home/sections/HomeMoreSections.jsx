@@ -1,7 +1,6 @@
-import { ArrowUpRight, CalendarDays, Coffee, MapPin, Moon, Route, SunMedium } from 'lucide-react'
+import { ArrowUpRight, CalendarDays, CloudRain, Coffee, Leaf, MapPin, Moon, Route, Snowflake, SunMedium } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-import trailImage from '../../../assets/images/generated-coorg-activity-trail.png'
 import detailImage from '../../../assets/images/about-section-img-2.webp'
 
 const reveal = {
@@ -13,19 +12,6 @@ const reveal = {
   },
 }
 
-const stagger = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.09, delayChildren: 0.08 },
-  },
-}
-
-const arrivalSteps = [
-  'A quiet drive through coffee country',
-  'Warm welcome with estate views',
-  'Slow check-in without the rush',
-]
-
 const rhythm = [
   { icon: SunMedium, title: 'Morning Mist', text: 'Wake to soft valley light and the scent of coffee leaves.' },
   { icon: Coffee, title: 'Estate Hours', text: 'Move between breakfast, trails, and open-air pauses.' },
@@ -33,9 +19,9 @@ const rhythm = [
 ]
 
 const seasons = [
-  ['Monsoon', 'Misty, lush, cinematic'],
-  ['Winter', 'Clear air and golden mornings'],
-  ['Summer', 'Soft shade and estate walks'],
+  [CloudRain, 'Monsoon', 'Misty, lush, cinematic', 'Rain-washed leaves, low clouds, and slow indoor afternoons.'],
+  [Snowflake, 'Winter', 'Clear air and golden mornings', 'Crisp mornings, open views, and evenings made for firelight.'],
+  [Leaf, 'Summer', 'Soft shade and estate walks', 'Cool estate trails, shaded verandahs, and longer golden hours.'],
 ]
 
 function SectionLabel({ children, light = false }) {
@@ -49,58 +35,14 @@ function SectionLabel({ children, light = false }) {
 function HomeMoreSections() {
   return (
     <>
-      <section className="overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
-          <motion.div
-            variants={reveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-          >
-            <SectionLabel>Arrival Experience</SectionLabel>
-            <h2 className="evaara-title text-4xl sm:text-5xl md:text-6xl">
-              The resort begins before the doorway.
-            </h2>
-            <p className="evaara-copy mt-5 max-w-xl text-sm md:text-[15px]">
-              EVAARA is designed so the first impression feels calm: the road,
-              the estate air, the welcome, and the sense that the day can slow
-              down now.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="grid gap-4"
-          >
-            {arrivalSteps.map((step, index) => (
-              <motion.div
-                key={step}
-                variants={reveal}
-                className="grid gap-5 border-t border-[#102C26]/10 py-6 sm:grid-cols-[90px_1fr]"
-              >
-                <span className="font-mono text-xs tracking-[0.24em] text-[#B99A62]">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <p className="text-2xl font-light leading-tight tracking-[-0.04em] text-[#102C26]">
-                  {step}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
+      <section className="overflow-hidden bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <motion.div
             variants={reveal}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.25 }}
-            className="mb-10 max-w-3xl"
+            className="mb-6 max-w-3xl"
           >
             <SectionLabel light>Estate Rhythm</SectionLabel>
             <h2 className="evaara-title text-4xl sm:text-5xl md:text-6xl">
@@ -108,7 +50,7 @@ function HomeMoreSections() {
             </h2>
           </motion.div>
 
-          <div className="grid gap-4 lg:grid-cols-3">
+          <div className="grid gap-5 lg:grid-cols-3">
             {rhythm.map((item, index) => {
               const Icon = item.icon
 
@@ -119,10 +61,18 @@ function HomeMoreSections() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.75, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                  className="min-h-[250px] border border-[#102C26]/10 p-7"
+                  className="group relative min-h-[250px] overflow-hidden rounded-[18px] border border-[#D9C6A5]/45 bg-[#FFFDF8]/70 p-7 shadow-[0_20px_60px_rgba(16,44,38,0.06)] transition duration-500 hover:-translate-y-1 hover:border-[#B99A62]/65 hover:bg-[#FFFDF8]"
                 >
-                  <Icon size={26} strokeWidth={1.4} className="text-[#B99A62]" />
-                  <h3 className="mt-10 text-2xl font-light tracking-[-0.04em]">
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#B99A62]/55 to-transparent" />
+                  <div className="flex items-center justify-between">
+                    <span className="grid size-11 place-items-center rounded-full bg-[#D9C6A5]/28 text-[#B99A62] transition duration-300 group-hover:bg-[#B99A62] group-hover:text-[#071A17]">
+                      <Icon size={22} strokeWidth={1.45} />
+                    </span>
+                    <span className="font-mono text-[10px] tracking-[0.24em] text-[#102C26]/32">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <h3 className="mt-8 text-2xl font-light tracking-[-0.04em]">
                     {item.title}
                   </h3>
                   <p className="mt-4 text-sm leading-7 text-[#102C26]/62">
@@ -135,14 +85,14 @@ function HomeMoreSections() {
         </div>
       </section>
 
-      <section className="overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.12fr_0.88fr]">
+      <section className="overflow-hidden bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 lg:grid-cols-[1.04fr_0.96fr] lg:gap-12">
           <motion.div
             initial={{ opacity: 0, clipPath: 'inset(12% 0 12% 0)' }}
             whileInView={{ opacity: 1, clipPath: 'inset(0% 0 0% 0)' }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative h-[560px] overflow-hidden rounded-[24px]"
+            className="relative h-[330px] overflow-hidden rounded-[22px] border border-[#D9C6A5]/35 shadow-[0_26px_80px_rgba(16,44,38,0.12)] sm:h-[430px] lg:h-[540px]"
           >
             <img src={detailImage} alt="EVAARA dining detail in Coorg" loading="lazy" className="h-full w-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#071A17]/58 via-transparent to-transparent" />
@@ -163,6 +113,18 @@ function HomeMoreSections() {
               seasonal produce, comforting Coorg flavours, and tables designed
               for long conversations.
             </p>
+            <p className="evaara-copy mt-4 text-sm md:text-[15px]">
+              From quiet breakfasts after misty walks to candlelit dinners with
+              forest sounds around you, every meal is planned to feel rooted in
+              the estate rather than rushed by the clock.
+            </p>
+            <div className="mt-7 grid gap-3 sm:grid-cols-3">
+              {['Estate coffee', 'Local produce', 'Slow dining'].map((item) => (
+                <div key={item} className="rounded-[10px] border border-[#D9C6A5]/45 bg-[#FFFDF8]/62 px-4 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-[#536B50]">
+                  {item}
+                </div>
+              ))}
+            </div>
             <a href="/contact" className="evaara-link group mt-8">
               Reserve a Table
               <ArrowUpRight size={15} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -171,71 +133,51 @@ function HomeMoreSections() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
-        <img src={trailImage} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover opacity-35" />
-        <div className="absolute inset-0 bg-[#F3F0E8]/82" />
+      <section className="relative overflow-hidden bg-[#F3F0E8] px-6 py-10 text-[#102C26] md:px-10 md:py-12 lg:px-16">
+        <div className="pointer-events-none absolute -right-36 top-0 h-96 w-96 rounded-full border border-[#D9C6A5]/24" />
+        <div className="pointer-events-none absolute -left-28 bottom-8 h-80 w-80 rounded-full border border-[#536B50]/10" />
         <div className="relative mx-auto max-w-7xl">
-          <motion.div
-            variants={reveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            className="mb-10 max-w-3xl"
-          >
-            <SectionLabel light>Seasons Of Coorg</SectionLabel>
-            <h2 className="evaara-title text-4xl sm:text-5xl md:text-6xl">
-              Every season changes the resort's voice.
-            </h2>
-          </motion.div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {seasons.map(([season, text], index) => (
+          <div className="mb-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <motion.div
+              variants={reveal}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              className="max-w-3xl"
+            >
+              <SectionLabel light>Seasons Of Coorg</SectionLabel>
+              <h2 className="evaara-title text-4xl sm:text-5xl md:text-6xl">
+                Every season changes the resort's voice.
+              </h2>
+            </motion.div>
+            <p data-scroll-reveal className="evaara-copy max-w-xl text-sm md:text-[15px]">
+              The estate never feels the same twice. Mist, sun, rain, and cool
+              mountain air shift the mood of every path, meal, view, and evening.
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-3">
+            {seasons.map(([Icon, season, text, detail], index) => (
               <motion.div
                 key={season}
                 initial={{ opacity: 0, y: 26 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.72, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="border-t border-[#D9C6A5]/34 pt-6"
+                className="group relative min-h-[260px] overflow-hidden rounded-[18px] border border-[#D9C6A5]/45 bg-[#FFFDF8]/72 p-6 shadow-[0_22px_70px_rgba(16,44,38,0.06)] transition duration-500 hover:-translate-y-1 hover:border-[#B99A62]/65 hover:bg-[#FFFDF8]"
               >
-                <p className="font-serif text-3xl">{season}</p>
-                <p className="mt-3 text-sm leading-7 text-[#102C26]/64">{text}</p>
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#B99A62]/55 to-transparent" />
+                <div className="flex items-center justify-between">
+                  <span className="grid size-11 place-items-center rounded-full bg-[#D9C6A5]/28 text-[#B99A62] transition duration-300 group-hover:bg-[#B99A62] group-hover:text-[#071A17]">
+                    <Icon size={21} strokeWidth={1.45} />
+                  </span>
+                  <span className="font-mono text-[10px] tracking-[0.24em] text-[#102C26]/30">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                <p className="mt-8 font-serif text-3xl text-[#102C26]">{season}</p>
+                <p className="mt-3 text-sm font-semibold text-[#536B50]">{text}</p>
+                <p className="mt-4 text-sm leading-7 text-[#102C26]/58">{detail}</p>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.76fr_1.24fr]">
-          <motion.div
-            variants={reveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-          >
-            <SectionLabel>Booking Journey</SectionLabel>
-            <h2 className="evaara-title text-4xl sm:text-5xl">
-              Simple, personal, considered.
-            </h2>
-          </motion.div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {[
-              [CalendarDays, 'Share Dates', 'Tell us when you want to arrive.'],
-              [MapPin, 'Choose Mood', 'Rooms, views, meals, and experiences.'],
-              [Route, 'Arrive Slowly', 'We help shape the details before you come.'],
-            ].map(([Icon, title, text], index) => (
-              <motion.article
-                key={title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.7, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                className="border border-[#102C26]/10 bg-white/52 p-6"
-              >
-                <Icon size={23} strokeWidth={1.5} className="text-[#B99A62]" />
-                <h3 className="mt-7 text-xl font-light tracking-[-0.035em]">{title}</h3>
-                <p className="mt-3 text-sm leading-7 text-[#102C26]/58">{text}</p>
-              </motion.article>
             ))}
           </div>
         </div>

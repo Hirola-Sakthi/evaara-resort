@@ -181,7 +181,7 @@ function HeroSection() {
             </motion.div>
           </AnimatePresence>
 
-          <div className="mt-12 flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
+          <div className="mt-8 flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
             <a
               href="#home-intro"
               className="group flex w-fit items-center gap-3 text-xs text-[#F6F1E7]/75"

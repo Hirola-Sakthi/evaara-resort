@@ -14,7 +14,6 @@ import TestimonialsFaq from './sections/TestimonialsFaq'
 function Home() {
   return (
     <>
-      {/* <Hero /> */}
       <HeroSection />
       <AboutPreview />
       <CinematicVideo />

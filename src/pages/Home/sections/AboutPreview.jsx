@@ -8,27 +8,18 @@ function AboutPreview() {
   return (
     <section
       id="home-intro"
-      className="relative overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16 lg:py-28 xl:px-20"
+      className="relative overflow-hidden bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16 xl:px-20"
     >
-      {/* Ambient background glow */}
       <div className="pointer-events-none absolute -right-40 top-0 h-[500px] w-[500px] rounded-full bg-[#B99A62]/5 blur-[130px]" />
 
       <div className="pointer-events-none absolute -left-40 bottom-0 h-[450px] w-[450px] rounded-full bg-[#536B50]/5 blur-[120px]" />
 
       <div className="relative mx-auto max-w-[1400px]">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 xl:grid-cols-[1.1fr_0.9fr] xl:gap-16">
-
-          {/* =====================================================
-              LEFT — IMAGE COLLAGE
-          ====================================================== */}
           <div
             data-scroll-reveal
-            className="relative h-[500px] sm:h-[550px] md:h-[590px]"
+            className="relative h-[320px] sm:h-[430px] md:h-[520px] lg:h-[560px]"
           >
-
-            {/* =================================================
-                MAIN IMAGE — INCREASED WIDTH
-            ================================================= */}
             <motion.div
               initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -42,17 +33,17 @@ function AboutPreview() {
                 left-0
                 top-0
                 z-10
-                h-[410px]
-                w-[72%]
+                h-[250px]
+                w-[88%]
                 overflow-hidden
                 rounded-[24px]
-                sm:h-[455px]
-                sm:w-[74%]
-                md:h-[500px]
+                sm:h-[355px]
+                sm:w-[76%]
+                md:h-[430px]
                 md:w-[76%]
-                lg:h-[470px]
+                lg:h-[455px]
                 lg:w-[78%]
-                xl:h-[510px]
+                xl:h-[490px]
                 xl:w-[80%]
               "
             >
@@ -69,15 +60,8 @@ function AboutPreview() {
                 whileHover={{ scale: 1.035 }}
                 className="h-full w-full object-cover"
               />
-
-              {/* Soft cinematic overlay */}
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#071A17]/30 via-transparent to-transparent" />
             </motion.div>
-
-
-            {/* =================================================
-                SECOND IMAGE
-            ================================================= */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -92,16 +76,17 @@ function AboutPreview() {
                 bottom-0
                 right-[3%]
                 z-30
-                h-[190px]
-                w-[48%]
+                h-[130px]
+                w-[60%]
                 overflow-hidden
                 rounded-[22px]
                 border-[7px]
                 border-[#F3F0E8]
-                sm:h-[215px]
-                md:h-[245px]
-                lg:h-[225px]
-                xl:h-[255px]
+                sm:h-[185px]
+                sm:w-[48%]
+                md:h-[220px]
+                lg:h-[215px]
+                xl:h-[235px]
               "
             >
               <motion.img
@@ -119,11 +104,6 @@ function AboutPreview() {
                 className="h-full w-full object-cover"
               />
             </motion.div>
-
-
-            {/* =================================================
-                GOLD DECORATIVE CORNER
-            ================================================= */}
             <div
               className="
                 pointer-events-none
@@ -139,20 +119,11 @@ function AboutPreview() {
               "
             />
 
-
-            {/* =================================================
-                VERTICAL LOCATION
-            ================================================= */}
             <div className="absolute -left-7 top-1/2 hidden -translate-y-1/2 -rotate-90 lg:block">
               <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-[#102C26]/30">
                 COORG · KARNATAKA
               </span>
             </div>
-
-
-            {/* =================================================
-                IMAGE COUNTER
-            ================================================= */}
             <div className="absolute bottom-3 left-[69%] hidden md:block">
               <span className="font-mono text-[9px] tracking-[0.2em] text-[#102C26]/25">
                 01 — 02
@@ -160,21 +131,13 @@ function AboutPreview() {
             </div>
 
           </div>
-
-
-          {/* =====================================================
-              RIGHT — CONTENT
-          ====================================================== */}
           <div
             data-scroll-reveal
             className="max-w-xl lg:pl-1 xl:pl-3"
           >
-
-            {/* Eyebrow */}
             <p className="evaara-eyebrow mb-6">The EVAARA Story</p>
 
 
-            {/* Heading */}
             <h2
               className="
                 evaara-title
@@ -193,11 +156,9 @@ function AboutPreview() {
             </h2>
 
 
-            {/* Divider */}
             <div className="my-7 h-px w-full bg-[#102C26]/10" />
 
 
-            {/* Description */}
             <div className="space-y-5">
               <p className="text-sm leading-7 text-[#102C26]/55 md:text-[15px] md:leading-8">
                 EVAARA Resort is a peaceful sanctuary set amidst the rolling
@@ -213,7 +174,6 @@ function AboutPreview() {
             </div>
 
 
-            {/* CTA */}
             <div className="mt-8">
               <a
                 href="/about"

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import videoImage from '../../../assets/images/main-banner-2.webp'
 
-const videoUrl = 'https://www.youtube.com/embed/ysz5S6PUM-U?autoplay=1&rel=0&modestbranding=1'
+const videoUrl = 'https://www.youtube.com/embed/ARcXxrH4JNA?autoplay=1&rel=0&modestbranding=1'
 
 function CinematicVideo() {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,14 +27,14 @@ function CinematicVideo() {
   }, [isOpen])
 
   return (
-    <section className="overflow-hidden bg-[#F3F0E8] px-5 py-20 text-[#102C26] sm:px-8 md:py-24 lg:px-12">
-      <div className="mx-auto max-w-[1320px]">
+    <section className="overflow-hidden bg-[#F3F0E8] px-5 pb-4 pt-8 text-[#102C26] sm:px-8 md:pb-5 md:pt-10 lg:px-12">
+      <div className="mx-auto max-w-[1180px] xl:max-w-[1320px]">
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between"
+          className="mb-6 flex flex-col gap-5 md:flex-row md:items-end md:justify-between"
         >
           <div>
             <p className="evaara-eyebrow mb-4">Resort Film</p>
@@ -55,7 +55,7 @@ function CinematicVideo() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="group relative block aspect-[16/10] w-full overflow-hidden rounded-[24px] text-left shadow-2xl shadow-black/25 md:aspect-[16/8]"
+          className="group relative block aspect-[4/3] w-full overflow-hidden rounded-[18px] text-left shadow-xl shadow-black/18 sm:aspect-[16/10] sm:rounded-[22px] md:aspect-[16/8.8] lg:aspect-[16/8]"
           aria-label="Play EVAARA resort film"
         >
           <motion.img
@@ -68,23 +68,20 @@ function CinematicVideo() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#071A17]/75 via-[#071A17]/18 to-transparent" />
           <div className="absolute inset-0 grid place-items-center">
-            <span className="absolute h-24 w-24 rounded-full border border-[#D9C6A5]/35 motion-safe:animate-ping" />
-            <span className="grid h-24 w-24 place-items-center rounded-full border border-[#D9C6A5]/70 bg-[#F6F1E7]/10 text-[#F6F1E7] backdrop-blur-md transition-all duration-500 group-hover:bg-[#B99A62] group-hover:text-[#071A17]">
-              <Play size={26} strokeWidth={1.6} fill="currentColor" />
+            <span className="absolute h-16 w-16 rounded-full border border-[#D9C6A5]/35 motion-safe:animate-ping sm:h-20 sm:w-20 lg:h-24 lg:w-24" />
+            <span className="grid h-16 w-16 place-items-center rounded-full border border-[#D9C6A5]/70 bg-[#F6F1E7]/10 text-[#F6F1E7] backdrop-blur-md transition-all duration-500 group-hover:bg-[#B99A62] group-hover:text-[#071A17] sm:h-20 sm:w-20 lg:h-24 lg:w-24">
+              <Play size={20} strokeWidth={1.6} fill="currentColor" className="sm:size-6" />
             </span>
           </div>
-          <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-6">
+          <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4 sm:bottom-6 sm:left-6 sm:right-6 sm:gap-6">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#D9C6A5]">
+              <p className="text-[9px] font-bold uppercase tracking-[0.24em] text-[#D9C6A5] sm:text-[10px] sm:tracking-[0.3em]">
                 Watch the feeling of Coorg
               </p>
-              <p className="mt-2 max-w-lg text-xl font-light leading-tight text-[#F6F1E7] sm:text-3xl">
+              <p className="mt-2 max-w-lg text-lg font-light leading-tight text-[#F6F1E7] sm:text-2xl md:text-3xl">
                 Coffee-scented air, forest quiet, and unhurried luxury.
               </p>
             </div>
-            <span className="hidden text-[10px] uppercase tracking-[0.24em] text-[#F6F1E7]/65 md:block">
-              01:48
-            </span>
           </div>
         </motion.button>
       </div>

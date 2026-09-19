@@ -111,9 +111,8 @@ export default function FeaturedRooms() {
   };
 
   return (
-    <section className="overflow-hidden bg-[#F3F0E8] py-14 sm:py-16 md:py-20">
+    <section className="overflow-hidden bg-[#F3F0E8] pb-8 pt-4 sm:pb-10 sm:pt-5 md:pb-8 md:pt-5">
       <div className="mx-auto max-w-[1250px] px-5 sm:px-8 lg:px-10">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -125,14 +124,12 @@ export default function FeaturedRooms() {
           className="mb-9 flex flex-col gap-6 md:mb-11 md:flex-row md:items-end md:justify-between"
         >
           <div className="max-w-[700px]">
-            {/* Small Label */}
             <p className="evaara-eyebrow mb-4">Stay at EVAARA</p>
 
-            {/* About Preview Style Heading */}
             <h2 className="evaara-title text-4xl sm:text-5xl md:text-6xl">
               A stay that feels
               <br />
-              <span className="italic text-[#536B50]">
+              <span className="text-[#536B50]">
                 like coming home.
               </span>
             </h2>
@@ -147,7 +144,7 @@ export default function FeaturedRooms() {
             href="/rooms"
             whileHover={{ x: 4 }}
             transition={{ duration: 0.3 }}
-            className="evaara-link group"
+            className="evaara-text-link group"
           >
             Explore all rooms
 
@@ -159,9 +156,7 @@ export default function FeaturedRooms() {
           </motion.a>
         </motion.div>
 
-        {/* Main Room Showcase */}
         <div className="grid gap-4 lg:grid-cols-[1.22fr_0.78fr]">
-          {/* Image Panel */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -185,10 +180,8 @@ export default function FeaturedRooms() {
               />
             </AnimatePresence>
 
-            {/* Image Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
 
-            {/* Image Bottom Content */}
             <div className="absolute bottom-5 left-5 right-5 text-white sm:bottom-7 sm:left-7 sm:right-7">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -218,7 +211,6 @@ export default function FeaturedRooms() {
             </div>
           </motion.div>
 
-          {/* Information Panel */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -250,7 +242,6 @@ export default function FeaturedRooms() {
                   {currentRoom.description}
                 </p>
 
-                {/* Room Details */}
                 <motion.div
                   variants={detailsContainer}
                   initial="hidden"
@@ -295,7 +286,6 @@ export default function FeaturedRooms() {
               </motion.div>
             </AnimatePresence>
 
-            {/* Bottom Controls */}
             <div className="mt-8 flex items-center justify-between gap-4">
               <motion.a
                 href={`/rooms/${currentRoom.slug}`}
@@ -311,8 +301,6 @@ export default function FeaturedRooms() {
                   className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 />
               </motion.a>
-
-              {/* Navigation Buttons */}
               <div className="flex items-center gap-2">
                 <motion.button
                   type="button"
@@ -340,7 +328,6 @@ export default function FeaturedRooms() {
           </motion.div>
         </div>
 
-        {/* Minimal Progress Indicator */}
         <div className="mt-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
             {featuredRooms.map((room, index) => (

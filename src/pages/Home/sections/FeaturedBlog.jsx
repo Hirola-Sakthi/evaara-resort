@@ -8,14 +8,14 @@ const featuredPosts = blogPosts.slice(0, 3)
 
 function FeaturedBlog() {
   return (
-    <section className="overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
+    <section className="overflow-hidden bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
       <div className="mx-auto max-w-[1280px]">
         <motion.div
           initial={{ opacity: 0, y: 26 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+          className="mb-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
           <div>
             <p className="evaara-eyebrow mb-4">From the Journal</p>
@@ -27,7 +27,7 @@ function FeaturedBlog() {
             href={`/blog/${featuredPosts[0].slug}`}
             whileHover={{ x: 4 }}
             transition={{ duration: 0.3 }}
-            className="evaara-link group"
+            className="evaara-text-link group"
           >
             Read Journal
             <ArrowUpRight
@@ -48,7 +48,7 @@ function FeaturedBlog() {
             className="group block"
           >
             <article>
-              <div className="relative h-[420px] overflow-hidden rounded-[22px] md:h-[560px]">
+              <div className="relative h-[320px] overflow-hidden rounded-[22px] sm:h-[420px] md:h-[560px]">
                 <img
                   src={getBlogImage(featuredPosts[0].image)}
                   alt={featuredPosts[0].title}
@@ -59,7 +59,7 @@ function FeaturedBlog() {
               </div>
               <div className="mt-6 max-w-2xl">
                 <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-[#536B50]">
-                  {featuredPosts[0].category} / {featuredPosts[0].date}
+                  {featuredPosts[0].date}
                 </p>
                 <h3 className="mt-3 text-3xl font-light leading-tight tracking-[-0.045em] text-[#102C26] sm:text-4xl">
                   {featuredPosts[0].title}
@@ -96,7 +96,7 @@ function FeaturedBlog() {
                 </div>
                 <article>
                   <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#536B50]">
-                    {post.category} / {post.date}
+                    {post.date}
                   </p>
                   <h3 className="mt-3 text-2xl font-light leading-tight tracking-[-0.04em] text-[#102C26]">
                     {post.title}

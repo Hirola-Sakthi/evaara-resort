@@ -26,7 +26,7 @@ const cardVariants = {
 
 function RoomGrid() {
   return (
-    <section className="evaara-section px-6 py-20 md:px-10 md:py-24 lg:px-16">
+    <section className="evaara-section px-6 py-8 md:px-10 md:py-10 lg:px-16">
       <div className="mx-auto max-w-7xl">
         <div data-scroll-reveal className="grid gap-8 border-b border-[#102C26]/10 pb-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
           <div>
@@ -55,7 +55,7 @@ function RoomGrid() {
           })}
         </div>
 
-        <div className="mt-10 grid gap-6">
+        <div className="mt-8 grid gap-6">
           {rooms.map((room, index) => (
             <motion.article
               custom={index}

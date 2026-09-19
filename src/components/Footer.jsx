@@ -44,7 +44,7 @@ function Footer() {
   }
 
   return (
-    <footer className="relative isolate overflow-hidden border-t border-[#B99A62]/30 px-6 py-10 text-[#f6f1e7] md:px-10 md:py-12">
+    <footer className="relative isolate overflow-hidden border-t border-[#B99A62]/30 px-6 py-8 text-[#f6f1e7] md:px-10 md:py-10">
       <img src={footerImage} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(7,26,23,0.94),rgba(16,44,38,0.88),rgba(7,26,23,0.82))]" />
       <div className="absolute inset-x-0 top-0 -z-10 h-px bg-gradient-to-r from-transparent via-[#B99A62]/80 to-transparent" />

@@ -7,7 +7,7 @@ import { getBlogImage } from '../../data/blogImages'
 function ContentBlock({ block }) {
   if (block.type === 'heading') {
     return (
-      <h2 className="evaara-title mt-12 text-3xl md:text-4xl">
+      <h2 className="evaara-title mt-8 text-3xl md:text-4xl">
         {block.text}
       </h2>
     )
@@ -28,7 +28,7 @@ function ContentBlock({ block }) {
           src={getBlogImage(block.image)}
           alt={block.caption || 'EVAARA Resort journal image'}
           loading="lazy"
-          className="h-[360px] w-full object-cover md:h-[520px]"
+          className="h-[280px] w-full object-cover sm:h-[360px] md:h-[520px]"
         />
       </figure>
     )
@@ -101,7 +101,7 @@ function BlogDetail({ slug }) {
           subtitle="The journal story you are looking for may have moved. Return to the blog to continue exploring Coorg."
           image={getBlogImage('trail')}
         />
-        <section className="bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 lg:px-16">
+        <section className="bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 lg:px-16">
           <div className="mx-auto max-w-4xl">
             <a href="/blog" className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.18em] text-[#102C26]">
               <ArrowLeft size={16} strokeWidth={1.5} />
@@ -125,20 +125,16 @@ function BlogDetail({ slug }) {
         image={getBlogImage(post.image)}
       />
 
-      <article className="bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
+      <article className="bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
         <div className="mx-auto max-w-4xl">
-          <div data-scroll-reveal className="mb-10">
-            <a href="/blog" className="evaara-link mb-8">
-              <ArrowLeft size={16} strokeWidth={1.5} />
-              Back to Blog
-            </a>
+          <div data-scroll-reveal className="mb-6">
             <p className="evaara-eyebrow">
-              {post.category} / {post.date} / {post.readTime}
+              {post.date}
             </p>
             <p className="mt-6 border-l border-[#B99A62]/60 pl-6 text-xl leading-9 tracking-[-0.03em] text-[#102C26]/72 md:text-2xl md:leading-10">
               {post.excerpt}
             </p>
-            <div className="mt-10">
+            <div className="mt-8">
               {post.content.map((block, index) => (
                 <ContentBlock key={`${block.type}-${index}`} block={block} />
               ))}
@@ -147,16 +143,16 @@ function BlogDetail({ slug }) {
         </div>
       </article>
 
-      <section className="bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 lg:px-16">
+      <section className="bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 lg:px-16">
         <div className="mx-auto max-w-7xl">
-          <div data-scroll-reveal className="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div data-scroll-reveal className="mb-6 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="evaara-eyebrow">Continue Reading</p>
               <h2 className="evaara-title mt-4 text-4xl md:text-5xl">
                 More from the EVAARA journal.
               </h2>
             </div>
-            <a href="/blog" className="evaara-link group">
+            <a href="/blog" className="evaara-text-link group">
               View Journal
               <ArrowUpRight size={15} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
@@ -180,7 +176,7 @@ function BlogDetail({ slug }) {
                 </div>
                 <div className="p-6">
                   <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#536B50]">
-                    {item.category} / {item.date}
+                    {item.date}
                   </p>
                   <h3 className="mt-3 text-2xl font-light leading-tight tracking-[-0.035em]">
                     {item.title}

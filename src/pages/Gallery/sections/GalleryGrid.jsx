@@ -26,9 +26,9 @@ function GalleryGrid() {
   const [activeImage, setActiveImage] = useState(null)
 
   return (
-    <section className="bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
+    <section className="bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
       <div className="mx-auto max-w-7xl">
-        <div data-scroll-reveal className="mb-10 grid gap-7 md:grid-cols-[0.8fr_1.2fr]">
+        <div data-scroll-reveal className="mb-6 grid gap-7 md:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="evaara-eyebrow mb-4">Resort Gallery</p>
             <h2 className="evaara-title text-4xl sm:text-5xl md:text-6xl">
@@ -41,7 +41,7 @@ function GalleryGrid() {
           </p>
         </div>
 
-        <div className="grid auto-rows-[210px] grid-cols-2 gap-4 md:grid-cols-4 md:auto-rows-[240px]">
+        <div className="grid auto-rows-[230px] gap-4 sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[240px]">
         {galleryImages.map((image, index) => (
           <button
             data-scroll-card

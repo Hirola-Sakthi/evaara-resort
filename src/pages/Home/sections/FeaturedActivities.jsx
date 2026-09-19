@@ -1,55 +1,71 @@
 import { ArrowUpRight } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+import resortImage from '../../../assets/images/generated-coorg-resort-hero.png'
+import roomImage from '../../../assets/images/generated-coorg-room-view.png'
+import trailImage from '../../../assets/images/generated-coorg-activity-trail.png'
+import coffeeImage from '../../../assets/images/about-section-img-2.webp'
 
 const featuredActivities = [
   {
     number: '01',
     title: 'Trekking',
     text: 'Explore scenic trails through misty coffee country, forest shade, and open hill views.',
-    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1200&q=90',
+    image: trailImage,
   },
   {
     number: '02',
     title: 'Coffee Plantation Tour',
     text: 'Walk through lush estates with local stories, slow tastings, and the scent of fresh coffee.',
-    image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=90',
+    image: coffeeImage,
   },
   {
     number: '03',
     title: 'Campfire Evenings',
     text: 'Gather under clear Coorg skies for warm conversations and a gentler end to the day.',
-    image: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=90',
+    image: resortImage,
   },
   {
     number: '04',
     title: 'Bird Watching',
     text: 'Listen closely as the surrounding canopy turns each morning into a living soundtrack.',
-    image: 'https://images.unsplash.com/photo-1501706362039-c6e80999a1d3?auto=format&fit=crop&w=1200&q=90',
+    image: roomImage,
   },
 ]
 
 function FeaturedActivities() {
   const sectionRef = useRef(null)
+  const [canParallax, setCanParallax] = useState(false)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start end', 'end start'],
   })
-  const firstY = useTransform(scrollYProgress, [0, 1], [60, -60])
-  const secondY = useTransform(scrollYProgress, [0, 1], [20, -90])
-  const thirdY = useTransform(scrollYProgress, [0, 1], [80, -30])
-  const fourthY = useTransform(scrollYProgress, [0, 1], [10, -70])
+  const firstY = useTransform(scrollYProgress, [0, 1], [28, -28])
+  const secondY = useTransform(scrollYProgress, [0, 1], [10, -42])
+  const thirdY = useTransform(scrollYProgress, [0, 1], [38, -18])
+  const fourthY = useTransform(scrollYProgress, [0, 1], [0, -34])
   const yValues = [firstY, secondY, thirdY, fourthY]
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1024px)')
+    const handleChange = () => setCanParallax(mediaQuery.matches)
+
+    handleChange()
+    mediaQuery.addEventListener('change', handleChange)
+
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
   return (
-    <section ref={sectionRef} className="overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
+    <section ref={sectionRef} className="overflow-hidden bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
       <div className="mx-auto max-w-[1320px]">
         <motion.div
           initial={{ opacity: 0, y: 26 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-12 grid gap-7 md:grid-cols-[0.85fr_1.15fr]"
+          className="mb-6 grid gap-7 md:grid-cols-[0.85fr_1.15fr]"
         >
           <div>
             <p className="evaara-eyebrow mb-4">Activities & Experiences</p>
@@ -64,11 +80,11 @@ function FeaturedActivities() {
           </p>
         </motion.div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:min-h-[760px] lg:grid-cols-4 lg:items-start">
+        <div className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:min-h-[660px] lg:grid-cols-4 lg:items-start lg:gap-6">
           {featuredActivities.map((activity, index) => (
             <motion.article
               key={activity.title}
-              style={{ y: yValues[index] }}
+              style={{ y: canParallax ? yValues[index] : 0 }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.18 }}
@@ -77,11 +93,11 @@ function FeaturedActivities() {
                 delay: index * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className={`group relative overflow-hidden rounded-[22px] bg-[#102C26] shadow-xl shadow-[#102C26]/10 ${
+              className={`group relative overflow-hidden rounded-[20px] bg-[#102C26] shadow-xl shadow-[#102C26]/10 sm:rounded-[22px] ${
                 index % 2 === 0 ? 'lg:mt-16' : 'lg:mt-0'
-              } ${index === 2 ? 'lg:mt-28' : ''}`}
+              } ${index === 2 ? 'lg:mt-20' : ''}`}
             >
-              <div className="relative h-[420px] overflow-hidden md:h-[500px] lg:h-[560px]">
+              <div className="relative h-[340px] overflow-hidden sm:h-[400px] md:h-[430px] lg:h-[500px]">
                 <img
                   src={activity.image}
                   alt={activity.title}
