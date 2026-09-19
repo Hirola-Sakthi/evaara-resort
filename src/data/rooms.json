@@ -1,0 +1,116 @@
+[
+  {
+    "slug": "deluxe-estate-room",
+    "title": "Deluxe Estate Room",
+    "category": "Estate Room",
+    "subtitle": "A calm garden-facing room for slow mornings, private conversations, and restful nights in Coorg.",
+    "description": "Warm timber details, soft linen, and a private sit-out make this room feel intimate without feeling small. It is designed for couples and solo travellers who want quiet, comfort, and a clear connection to the estate landscape.",
+    "image": "roomView",
+    "gallery": ["roomView", "aboutOne", "aboutTwo"],
+    "price": "From INR 9,500",
+    "stats": [
+      { "label": "Guests", "value": "2" },
+      { "label": "Room Size", "value": "350 sq.ft" },
+      { "label": "Bed", "value": "King" },
+      { "label": "View", "value": "Garden" }
+    ],
+    "amenities": ["Private sit-out", "King bed", "Rain shower", "Estate coffee", "Smart TV", "Air conditioning", "Premium linen", "Daily housekeeping"],
+    "highlights": [
+      "Garden-facing balcony with estate breeze",
+      "Layered warm lighting for evenings",
+      "Compact luxury layout with calm, natural textures"
+    ],
+    "details": [
+      { "label": "Best For", "value": "Couples and solo stays" },
+      { "label": "Check In", "value": "2:00 PM" },
+      { "label": "Check Out", "value": "11:00 AM" },
+      { "label": "Meal Plan", "value": "Breakfast included" }
+    ],
+    "content": [
+      {
+        "heading": "A private corner of the estate",
+        "text": "The Deluxe Estate Room keeps the mood soft and personal. Every detail is meant to slow the day down, from the reading corner to the balcony that looks into layers of green."
+      },
+      {
+        "heading": "Designed for easy rest",
+        "text": "Expect a plush bed, refined bath amenities, gentle lighting, and enough space to unpack, unwind, and feel settled from the first evening."
+      }
+    ]
+  },
+  {
+    "slug": "premium-coorg-villa",
+    "title": "Premium Coorg Villa",
+    "category": "Private Villa",
+    "subtitle": "A more spacious villa with quiet privacy, valley air, and a lounge made for unhurried evenings.",
+    "description": "The Premium Coorg Villa is shaped for guests who want more room to breathe. A generous lounge, private deck, and immersive views create a polished retreat for longer stays and special escapes.",
+    "image": "resortHero",
+    "gallery": ["resortHero", "roomView", "roomBanner"],
+    "price": "From INR 16,500",
+    "stats": [
+      { "label": "Guests", "value": "4" },
+      { "label": "Room Size", "value": "610 sq.ft" },
+      { "label": "Bed", "value": "King" },
+      { "label": "View", "value": "Valley" }
+    ],
+    "amenities": ["Private deck", "Lounge area", "King bed", "Deep shower", "Mini bar", "Estate coffee", "Smart TV", "Evening turn-down"],
+    "highlights": [
+      "Separate lounge for reading and conversation",
+      "Valley-facing deck with filtered morning light",
+      "Premium bath and sleep experience"
+    ],
+    "details": [
+      { "label": "Best For", "value": "Couples and small families" },
+      { "label": "Check In", "value": "2:00 PM" },
+      { "label": "Check Out", "value": "11:00 AM" },
+      { "label": "Meal Plan", "value": "Breakfast included" }
+    ],
+    "content": [
+      {
+        "heading": "More room, more privacy",
+        "text": "This villa gives the stay a slower rhythm. It is generous without feeling formal, balancing premium finishes with the quiet warmth of a Coorg estate home."
+      },
+      {
+        "heading": "For evenings that linger",
+        "text": "The lounge and deck make space for coffee, conversations, and the kind of silence that becomes the best part of a holiday."
+      }
+    ]
+  },
+  {
+    "slug": "family-plantation-suite",
+    "title": "Family Plantation Suite",
+    "category": "Family Suite",
+    "subtitle": "A generous suite for families who want shared comfort, private sleep, and effortless estate living.",
+    "description": "Built for families and small groups, this suite gives everyone space to gather and space to retreat. It pairs a larger layout with calm materials, estate views, and thoughtful conveniences.",
+    "image": "trail",
+    "gallery": ["trail", "resortHero", "aboutThree"],
+    "price": "From INR 22,000",
+    "stats": [
+      { "label": "Guests", "value": "5" },
+      { "label": "Room Size", "value": "900 sq.ft" },
+      { "label": "Bed", "value": "2 King" },
+      { "label": "View", "value": "Plantation" }
+    ],
+    "amenities": ["Two king beds", "Family lounge", "Private sit-out", "Dining nook", "Rain shower", "Smart TV", "Tea and coffee", "Daily housekeeping"],
+    "highlights": [
+      "Large lounge for family time",
+      "Two generous sleeping zones",
+      "Plantation-facing sit-out for quiet mornings"
+    ],
+    "details": [
+      { "label": "Best For", "value": "Families and groups" },
+      { "label": "Check In", "value": "2:00 PM" },
+      { "label": "Check Out", "value": "11:00 AM" },
+      { "label": "Meal Plan", "value": "Breakfast included" }
+    ],
+    "content": [
+      {
+        "heading": "Made for being together",
+        "text": "The Family Plantation Suite is relaxed, practical, and premium. It gives families a polished base for estate walks, long meals, and quiet evenings."
+      },
+      {
+        "heading": "Comfort without compromise",
+        "text": "The larger footprint keeps the suite calm even when everyone is moving through the day at a different pace."
+      }
+    ]
+  }
+]

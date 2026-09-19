@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Manrope", Helvetica, Arial, sans-serif;
+  background: #F3F0E8;
+  color: #102C26;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.evaara-section {
+  background: #F3F0E8;
+  color: #102C26;
+}
+
+.evaara-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.46em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #536B50;
+  text-rendering: geometricPrecision;
+}
+
+.evaara-eyebrow::before {
+  content: none;
+}
+
+.evaara-title {
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: #102C26;
+}
+
+.evaara-title span {
+  color: #536B50;
+}
+
+.evaara-title-light,
+.evaara-title-light span {
+  color: #F6F1E7;
+}
+
+.evaara-eyebrow-light {
+  color: #D9C6A5;
+}
+
+.evaara-copy {
+  color: rgb(16 44 38 / 0.62);
+  line-height: 2;
+}
+
+.evaara-link {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid #B99A62;
+  padding-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #102C26;
+  transition: color 300ms ease, transform 300ms ease, border-color 300ms ease;
+}
+
+.evaara-link:hover {
+  color: #B99A62;
+  transform: translateX(4px);
+}
+
+.evaara-button {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border: 1px solid #B99A62;
+  border-radius: 999px;
+  background: #B99A62;
+  padding: 0.875rem 1.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #071A17;
+  transition: background 300ms ease, color 300ms ease, transform 300ms ease, border-color 300ms ease;
+}
+
+.evaara-button:hover {
+  border-color: #D9C6A5;
+  background: #D9C6A5;
+  transform: translateY(-2px);
+}
