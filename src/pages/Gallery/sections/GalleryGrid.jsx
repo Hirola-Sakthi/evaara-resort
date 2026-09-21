@@ -48,7 +48,7 @@ function GalleryGrid() {
             type="button"
             key={image.title}
             onClick={() => setActiveImage(image)}
-            className={`group relative overflow-hidden rounded-[20px] text-left shadow-lg shadow-[#102C26]/10 ${image.size}`}
+            className={`group relative cursor-pointer overflow-hidden rounded-[20px] text-left shadow-lg shadow-[#102C26]/10 ${image.size}`}
           >
             <img
               src={image.src}
@@ -79,7 +79,7 @@ function GalleryGrid() {
             <button
               type="button"
               onClick={() => setActiveImage(null)}
-              className="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full border border-[#D9C6A5]/35 text-[#F6F1E7] transition hover:bg-[#B99A62] hover:text-[#071A17]"
+              className="absolute right-5 top-5 grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-[#D9C6A5]/35 text-[#F6F1E7] transition hover:bg-[#B99A62] hover:text-[#071A17]"
               aria-label="Close gallery image"
             >
               <X size={18} strokeWidth={1.5} />

@@ -2,7 +2,7 @@ import { ChevronDown } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useState } from 'react'
 
-const faqs = [
+const defaultFaqs = [
   {
     question: 'What is the check-in and check-out time?',
     answer: 'Check-in begins at 2:00 PM and check-out is at 11:00 AM. Early check-in or late check-out can be requested based on availability.',
@@ -25,22 +25,24 @@ const faqs = [
   },
 ]
 
-function TestimonialsFaq() {
+function TestimonialsFaq({
+  eyebrow = 'FAQ',
+  title = 'Before you arrive.',
+  text = 'Clear answers for planning your Coorg stay with ease, from arrival timings and meals to estate experiences and reservations. If you need anything more specific, our team can help shape the details before you travel.',
+  faqs = defaultFaqs,
+}) {
   const [activeFaq, setActiveFaq] = useState(0)
 
   return (
     <section className="bg-[#F3F0E8] px-6 py-8 text-[#102C26] md:px-10 md:py-10 lg:px-16">
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-16">
         <div data-scroll-reveal className="lg:sticky lg:top-28 lg:self-start">
-          <p className="evaara-eyebrow mb-5">FAQ</p>
+          <p className="evaara-eyebrow mb-5">{eyebrow}</p>
           <h2 className="evaara-title max-w-xl text-4xl md:text-5xl lg:text-6xl">
-            Before you arrive.
+            {title}
           </h2>
           <p className="evaara-copy mt-6 max-w-md text-sm md:text-[15px]">
-            Clear answers for planning your Coorg stay with ease, from arrival
-            timings and meals to estate experiences and reservations. If you
-            need anything more specific, our team can help shape the details
-            before you travel.
+            {text}
           </p>
         </div>
 
@@ -53,7 +55,7 @@ function TestimonialsFaq() {
                 <button
                   type="button"
                   onClick={() => setActiveFaq(isActive ? -1 : index)}
-                  className="flex w-full items-center gap-4 py-5 text-left sm:gap-5 sm:py-6"
+                  className="flex w-full cursor-pointer items-center gap-4 py-5 text-left sm:gap-5 sm:py-6"
                   aria-expanded={isActive}
                 >
                   <span className="w-9 shrink-0 font-mono text-[10px] tracking-[0.24em] text-[#B99A62] sm:w-12">

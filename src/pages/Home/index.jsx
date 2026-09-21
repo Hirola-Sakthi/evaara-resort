@@ -9,6 +9,7 @@ import HeroSection from './sections/HeroSection'
 import HomeMoreSections from './sections/HomeMoreSections'
 import ResortAmenities from './sections/ResortAmenities'
 import TestimonialsFaq from './sections/TestimonialsFaq'
+import VisualDiarySection from './sections/VisualDiarySection'
 
 
 function Home() {
@@ -21,9 +22,10 @@ function Home() {
       <ResortAmenities />
       <FeaturedActivities />
       <GalleryPreview />
-      <TestimonialsFaq />
+      <VisualDiarySection />
       <FeaturedBlog />
       <HomeMoreSections />
+      <TestimonialsFaq />
       <FinalCta />
     </>
   )

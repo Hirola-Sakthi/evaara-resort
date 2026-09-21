@@ -24,7 +24,7 @@ function FeaturedBlog() {
             </h2>
           </div>
           <motion.a
-            href={`/blog/${featuredPosts[0].slug}`}
+            href={`/blog`}
             whileHover={{ x: 4 }}
             transition={{ duration: 0.3 }}
             className="evaara-text-link group"

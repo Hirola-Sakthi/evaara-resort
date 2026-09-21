@@ -430,7 +430,7 @@ function ContactPanel() {
 
                 <button
                   type="submit"
-                  className="inline-flex w-fit items-center gap-7 rounded-full bg-[#B99A62] px-7 py-3.5 text-sm font-bold text-white shadow-xl shadow-[#B99A62]/24 transition hover:bg-[#A8874E]"
+                  className="inline-flex w-fit cursor-pointer items-center gap-7 rounded-full bg-[#B99A62] px-7 py-3.5 text-sm font-bold text-white shadow-xl shadow-[#B99A62]/24 transition hover:bg-[#A8874E]"
                 >
                   Send Message
 
@@ -502,11 +502,18 @@ function ContactPanel() {
               confirmed.
             </p>
 
+            <p className="evaara-copy mt-4 text-sm">
+              EVAARA is planned as a calm base for slow drives, coffee-estate
+              mornings, and easy access to Kodagu's nature trails. Share your
+              travel point with us and we will help with route suggestions,
+              timing, and arrival support.
+            </p>
+
             <a
               href="https://www.google.com/maps/search/?api=1&query=Coorg%20Karnataka"
               target="_blank"
               rel="noreferrer"
-              className="evaara-button mt-7"
+              className="evaara-button mt-7 cursor-pointer"
             >
               Open in Maps
             </a>

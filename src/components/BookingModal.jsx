@@ -99,7 +99,7 @@ function BookingModal({ isOpen, onClose }) {
           type="button"
           aria-label="Close booking form"
           onClick={onClose}
-          className="absolute right-3 top-3 z-20 grid size-9 place-items-center rounded-full text-[#102C26]/68 transition hover:bg-[#102C26]/8 hover:text-[#102C26] sm:right-4 sm:top-4"
+          className="absolute right-3 top-3 z-20 grid size-9 cursor-pointer place-items-center rounded-full text-[#102C26]/68 transition hover:bg-[#102C26]/8 hover:text-[#102C26] sm:right-4 sm:top-4"
         >
           <X size={21} strokeWidth={1.45} />
         </button>
@@ -174,7 +174,7 @@ function BookingModal({ isOpen, onClose }) {
 
             <button
               type="button"
-              className="mt-4 inline-flex h-11 w-full items-center justify-center gap-3 rounded-full bg-[#B99A62] px-6 text-xs font-bold uppercase tracking-[0.24em] text-[#071A17] shadow-[0_18px_45px_rgba(185,154,98,0.28)] transition hover:bg-[#D9C6A5] sm:mt-5 sm:h-12 sm:gap-4 sm:px-7 sm:tracking-[0.32em]"
+              className="mt-4 inline-flex h-11 w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-[#B99A62] px-6 text-xs font-bold uppercase tracking-[0.24em] text-[#071A17] shadow-[0_18px_45px_rgba(185,154,98,0.28)] transition hover:bg-[#D9C6A5] sm:mt-5 sm:h-12 sm:gap-4 sm:px-7 sm:tracking-[0.32em]"
             >
               <Send size={16} strokeWidth={1.55} />
               Send Enquiry

@@ -1,4 +1,5 @@
-import { ArrowUpRight, Bath, BedDouble, Coffee, DoorOpen, Trees, Users } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowUpRight, Bath, BedDouble, Coffee, DoorOpen, Grid2X2, List, Trees } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 import rooms from '../../../data/rooms.json'
@@ -25,6 +26,9 @@ const cardVariants = {
 }
 
 function RoomGrid() {
+  const [viewMode, setViewMode] = useState('list')
+  const isGrid = viewMode === 'grid'
+
   return (
     <section className="evaara-section px-6 py-8 md:px-10 md:py-10 lg:px-16">
       <div className="mx-auto max-w-7xl">
@@ -35,11 +39,34 @@ function RoomGrid() {
               Choose the stillness that fits your stay.
             </h2>
           </div>
-          <p className="evaara-copy max-w-2xl text-sm md:text-[15px]">
-            Every room at EVAARA is composed around views, privacy, and quiet
-            luxury. Browse refined rooms, villas, and suites designed for slow
-            Coorg mornings and unhurried evenings.
-          </p>
+          <div className="flex flex-col gap-5 lg:items-end">
+            <p className="evaara-copy max-w-2xl text-sm md:text-[15px] lg:text-right">
+              Every room at EVAARA is composed around views, privacy, and quiet
+              luxury. Browse refined rooms, villas, and suites designed for slow
+              Coorg mornings and unhurried evenings.
+            </p>
+            <div className="inline-flex w-fit rounded-full border border-[#B99A62]/30 bg-[#FFFDF8]/70 p-1 shadow-[0_14px_35px_rgba(16,44,38,0.06)]">
+              {[
+                ['list', List, 'List'],
+                ['grid', Grid2X2, 'Grid'],
+              ].map(([mode, Icon, label]) => (
+                <button
+                  key={mode}
+                  type="button"
+                  onClick={() => setViewMode(mode)}
+                  aria-pressed={viewMode === mode}
+                  className={`inline-flex h-9 cursor-pointer items-center gap-2 rounded-full px-4 text-[10px] font-bold uppercase tracking-[0.16em] transition duration-300 ${
+                    viewMode === mode
+                      ? 'bg-[#B99A62] text-[#071A17] shadow-[0_10px_24px_rgba(185,154,98,0.24)]'
+                      : 'text-[#102C26]/62 hover:text-[#102C26]'
+                  }`}
+                >
+                  <Icon size={15} strokeWidth={1.6} />
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div data-scroll-reveal className="grid gap-3 border-b border-[#102C26]/10 py-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -55,7 +82,7 @@ function RoomGrid() {
           })}
         </div>
 
-        <div className="mt-8 grid gap-6">
+        <div className={`mt-8 grid gap-6 ${isGrid ? 'lg:grid-cols-2' : ''}`}>
           {rooms.map((room, index) => (
             <motion.article
               custom={index}
@@ -64,9 +91,11 @@ function RoomGrid() {
               viewport={{ once: true, amount: 0.18 }}
               variants={cardVariants}
               key={room.slug}
-              className="group overflow-hidden rounded-[28px] border border-[#D9C6A5]/70 bg-[#FFFDF8] shadow-[0_24px_70px_rgba(16,44,38,0.08)] lg:grid lg:grid-cols-[0.98fr_1.02fr]"
+              className={`group overflow-hidden rounded-[28px] border border-[#D9C6A5]/70 bg-[#FFFDF8] shadow-[0_24px_70px_rgba(16,44,38,0.08)] ${
+                isGrid ? 'flex flex-col' : 'lg:grid lg:grid-cols-[0.98fr_1.02fr]'
+              }`}
             >
-              <a href={`/rooms/${room.slug}`} className="relative block min-h-[330px] overflow-hidden lg:min-h-[460px]">
+              <a href={`/rooms/${room.slug}`} className={`relative block overflow-hidden ${isGrid ? 'min-h-[300px]' : 'min-h-[330px] lg:min-h-[460px]'}`}>
                 <img
                   src={getRoomImage(room.image)}
                   alt={room.title}
@@ -81,7 +110,7 @@ function RoomGrid() {
                 </div>
               </a>
 
-              <div className="flex flex-col justify-between p-7 sm:p-9 lg:p-10">
+              <div className={`flex flex-col justify-between p-7 sm:p-9 ${isGrid ? '' : 'lg:p-10'}`}>
                 <div>
                   <div className="mb-5 flex flex-wrap gap-2">
                     {room.stats.map((stat) => (
@@ -91,7 +120,7 @@ function RoomGrid() {
                     ))}
                   </div>
 
-                  <h3 className="evaara-title max-w-xl text-4xl sm:text-5xl">
+                  <h3 className={`evaara-title max-w-xl text-4xl ${isGrid ? '' : 'sm:text-5xl'}`}>
                     {room.title}
                   </h3>
 
@@ -120,10 +149,6 @@ function RoomGrid() {
                       strokeWidth={1.5}
                       className="transition-transform duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
                     />
-                  </a>
-                  <a href="/contact" className="evaara-button group">
-                    Enquire
-                    <Users size={15} strokeWidth={1.5} />
                   </a>
                 </div>
               </div>

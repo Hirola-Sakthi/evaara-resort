@@ -77,9 +77,6 @@ function ActivityGrid() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#071A17]/82 via-[#071A17]/22 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-7 text-[#F6F1E7]">
                 <div className="mb-5 flex items-center justify-between">
-                  <span className="font-mono text-[10px] tracking-[0.26em] text-[#D9C6A5]">
-                    {activity.number}
-                  </span>
                   <span className="grid h-10 w-10 place-items-center rounded-full border border-[#D9C6A5]/45 transition group-hover:bg-[#B99A62] group-hover:text-[#071A17]">
                     <ArrowUpRight size={15} strokeWidth={1.5} />
                   </span>

@@ -90,7 +90,7 @@ function Header({ currentPath }) {
             <button
               type="button"
               onClick={handleBookNow}
-              className={`hidden rounded-full border px-7 py-3 text-sm font-bold uppercase tracking-[0.12em] transition sm:inline-flex ${
+              className={`hidden cursor-pointer rounded-full border px-7 py-3 text-sm font-bold uppercase tracking-[0.12em] transition sm:inline-flex ${
                 isScrolled
                   ? 'border-[#102C26]/25 bg-[#102C26] text-[#F3F0E8] hover:bg-[#B99A62] hover:text-[#071A17]'
                   : 'border-[#D9C6A5]/70 bg-[#071A17]/55 text-[#f6f1e7] hover:bg-[#B99A62] hover:text-[#071A17]'
@@ -169,7 +169,7 @@ function Header({ currentPath }) {
             <button
               type="button"
               onClick={handleBookNow}
-              className="mt-5 inline-flex w-full items-center justify-center rounded-full bg-[#102C26] px-6 py-4 text-sm font-bold uppercase tracking-[0.14em] text-[#F6F1E7] transition hover:bg-[#B99A62] hover:text-[#071A17]"
+              className="mt-5 inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-[#102C26] px-6 py-4 text-sm font-bold uppercase tracking-[0.14em] text-[#F6F1E7] transition hover:bg-[#B99A62] hover:text-[#071A17]"
             >
               Book Now
             </button>

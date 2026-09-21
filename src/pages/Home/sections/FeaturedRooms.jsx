@@ -291,7 +291,7 @@ export default function FeaturedRooms() {
                 href={`/rooms/${currentRoom.slug}`}
                 whileHover={{ x: 4 }}
                 transition={{ duration: 0.3 }}
-                className="evaara-link group"
+                className="evaara-link group cursor-pointer"
               >
                 Discover more
 
@@ -307,7 +307,7 @@ export default function FeaturedRooms() {
                   onClick={showPreviousRoom}
                   whileHover={{ scale: 1.06 }}
                   whileTap={{ scale: 0.94 }}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[#1E3025]/15 text-[#1E3025] transition-colors duration-300 hover:border-[#B99A62] hover:bg-[#B99A62] hover:text-white"
+                  className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-[#1E3025]/15 text-[#1E3025] transition-colors duration-300 hover:border-[#B99A62] hover:bg-[#B99A62] hover:text-white"
                   aria-label="Previous room"
                 >
                   <ChevronLeft size={16} strokeWidth={1.5} />
@@ -318,7 +318,7 @@ export default function FeaturedRooms() {
                   onClick={showNextRoom}
                   whileHover={{ scale: 1.06 }}
                   whileTap={{ scale: 0.94 }}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[#1E3025]/15 text-[#1E3025] transition-colors duration-300 hover:border-[#B99A62] hover:bg-[#B99A62] hover:text-white"
+                  className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-[#1E3025]/15 text-[#1E3025] transition-colors duration-300 hover:border-[#B99A62] hover:bg-[#B99A62] hover:text-white"
                   aria-label="Next room"
                 >
                   <ChevronRight size={16} strokeWidth={1.5} />
@@ -338,7 +338,7 @@ export default function FeaturedRooms() {
                 aria-label={`Show ${room.title}`}
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
-                className="flex h-5 items-center justify-center"
+                className="flex h-5 cursor-pointer items-center justify-center"
               >
                 <motion.span
                   animate={{
