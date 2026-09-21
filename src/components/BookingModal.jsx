@@ -119,7 +119,7 @@ function BookingModal({ isOpen, onClose }) {
                 EVAARA
               </p>
               <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.42em] text-[#102C26]/70">
-                Resort & Spa
+                Resort
               </p>
             </div>
 
