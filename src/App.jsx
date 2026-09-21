@@ -122,6 +122,10 @@ function App() {
     }
   }, [])
 
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [currentPath])
+
   return (
     <main className="min-h-screen bg-[#F3F0E8] text-[#102C26]">
       <Header key={currentPath} currentPath={currentPath} />

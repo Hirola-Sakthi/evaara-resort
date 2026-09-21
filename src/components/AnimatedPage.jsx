@@ -8,6 +8,10 @@ function AnimatedPage({ children, routeKey }) {
   const scope = useRef(null)
 
   useLayoutEffect(() => {
+    const resetScroll = () => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+
+    resetScroll()
+
     const context = gsap.context(() => {
       gsap.from('[data-hero-reveal]', {
         y: 34,
@@ -45,7 +49,19 @@ function AnimatedPage({ children, routeKey }) {
       })
     }, scope)
 
-    return () => context.revert()
+    ScrollTrigger.refresh()
+
+    const frame = window.requestAnimationFrame(() => {
+      resetScroll()
+      ScrollTrigger.refresh()
+    })
+    const timer = window.setTimeout(resetScroll, 120)
+
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.clearTimeout(timer)
+      context.revert()
+    }
   }, [routeKey])
 
   return <div ref={scope}>{children}</div>

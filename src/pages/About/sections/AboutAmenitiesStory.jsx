@@ -62,7 +62,7 @@ function AboutAmenitiesStory() {
   useLayoutEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-    if (reduceMotion) {
+    if (reduceMotion || window.innerWidth < 1024) {
       return undefined
     }
 
@@ -158,7 +158,7 @@ function AboutAmenitiesStory() {
 
       <div
         ref={stageRef}
-        className="relative flex min-h-svh items-center justify-center overflow-hidden bg-[#F4F1E9] px-6 py-8 md:px-10 lg:px-16"
+        className="relative hidden min-h-svh items-center justify-center overflow-hidden bg-[#F4F1E9] px-6 py-8 md:px-10 lg:flex lg:px-16"
       >
         <div className="relative mx-auto w-full max-w-7xl lg:pr-16 xl:pr-20">
           <div className="relative min-h-[520px] sm:min-h-[540px] lg:min-h-[500px] xl:min-h-[520px]">
@@ -230,6 +230,56 @@ function AboutAmenitiesStory() {
             })}
           </div>
         </div>
+      </div>
+
+      <div className="grid gap-5 px-6 pb-10 md:px-10 lg:hidden">
+        {stayChapters.map((chapter, index) => {
+          const Icon = chapter.icon
+
+          return (
+            <article
+              key={chapter.title}
+              className="overflow-hidden rounded-[24px] border border-[#D9C6A5]/55 bg-[#FFFDF8] shadow-[0_22px_70px_rgba(16,44,38,0.1)]"
+            >
+              <div className="relative min-h-[260px] overflow-hidden">
+                <img
+                  src={chapter.image}
+                  alt={`${chapter.title} at EVAARA Resort in Coorg`}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071A17]/58 via-[#071A17]/8 to-transparent" />
+              </div>
+
+              <div className="p-6">
+                <div className="mb-5 flex flex-wrap gap-2">
+                  {[chapter.eyebrow, 'Coorg Rooted'].map((item) => (
+                    <span
+                      key={`${chapter.title}-${item}`}
+                      className="rounded-full border border-[#B99A62]/28 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-[#536B50]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#D9C6A5]/28 text-[#B99A62]">
+                    <Icon size={21} strokeWidth={1.45} />
+                  </span>
+                  <div className="h-px flex-1 bg-[#102C26]/10" />
+                </div>
+
+                <h3 className="evaara-title mt-6 text-4xl">
+                  {chapter.title}
+                </h3>
+                <p className="evaara-copy mt-4 text-sm">
+                  {chapter.text}
+                </p>
+              </div>
+            </article>
+          )
+        })}
       </div>
     </section>
   )

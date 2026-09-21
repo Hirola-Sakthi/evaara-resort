@@ -63,9 +63,9 @@ function ResortAmenities() {
                   delay: index * 0.055,
                   ease: [0.22, 1, 0.36, 1],
                 }}
-                className="group relative grid min-h-[160px] grid-cols-[118px_1fr] overflow-hidden rounded-[18px] border border-[#D9C6A5]/45 bg-[#FFFDF8]/78 p-3 shadow-[0_18px_55px_rgba(16,44,38,0.07)] transition duration-500 hover:-translate-y-1 hover:border-[#B99A62]/65 hover:bg-[#FFFDF8] sm:grid-cols-[128px_1fr]"
+                className="group relative grid overflow-hidden rounded-[18px] border border-[#D9C6A5]/45 bg-[#FFFDF8]/78 p-3 shadow-[0_18px_55px_rgba(16,44,38,0.07)] transition duration-500 hover:-translate-y-1 hover:border-[#B99A62]/65 hover:bg-[#FFFDF8] sm:min-h-[160px] sm:grid-cols-[128px_1fr]"
               >
-                <div className="relative min-h-[136px] overflow-hidden rounded-[12px]">
+                <div className="relative min-h-[210px] overflow-hidden rounded-[12px] sm:min-h-[136px]">
                   <img
                     src={amenity.image}
                     alt={`${amenity.title} at EVAARA Resort`}
@@ -75,14 +75,14 @@ function ResortAmenities() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#071A17]/30 via-transparent to-transparent" />
                 </div>
 
-                <div className="relative flex flex-col justify-center px-4 py-4">
+                <div className="relative flex flex-col justify-center px-3 py-5 sm:px-4 sm:py-4">
                   <span className="mb-4 grid size-10 place-items-center rounded-full bg-[#D9C6A5]/30 text-[#B99A62] transition duration-300 group-hover:bg-[#B99A62] group-hover:text-[#071A17]">
                     <Icon size={20} strokeWidth={1.45} />
                   </span>
                   <h3 className="text-lg font-semibold tracking-[-0.02em] text-[#102C26]">
                     {amenity.title}
                   </h3>
-                  <p className="mt-2 max-w-[230px] text-xs leading-5 text-[#102C26]/56">
+                  <p className="mt-2 max-w-sm text-sm leading-6 text-[#102C26]/56 sm:max-w-[230px] sm:text-xs sm:leading-5">
                     {amenity.text}
                   </p>
                 </div>
