@@ -68,9 +68,6 @@ function HomeMoreSections() {
                     <span className="grid size-11 place-items-center rounded-full bg-[#D9C6A5]/28 text-[#B99A62] transition duration-300 group-hover:bg-[#B99A62] group-hover:text-[#071A17]">
                       <Icon size={22} strokeWidth={1.45} />
                     </span>
-                    <span className="font-mono text-[10px] tracking-[0.24em] text-[#102C26]/32">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
                   </div>
                   <h3 className="mt-8 text-2xl font-light tracking-[-0.04em]">
                     {item.title}

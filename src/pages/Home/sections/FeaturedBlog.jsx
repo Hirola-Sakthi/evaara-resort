@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import blogPosts from '../../../data/blogPosts.json'
 import { getBlogImage } from '../../../data/blogImages'
 
-const featuredPosts = blogPosts.slice(0, 3)
+const featuredPosts = blogPosts.slice(0, 4)
 
 function FeaturedBlog() {
   return (
