@@ -1,23 +1,30 @@
-function Logo({ dark = false }) {
+import logo from '../assets/images/evaara-logo.png'
+
+function Logo() {
   return (
-    <a href="/" className="group flex items-center gap-3">
-      <span
-        className={`grid size-11 place-items-center rounded-full border text-xl shadow-[0_0_35px_rgba(212,180,131,0.18)] ${
-          dark
-            ? 'border-[#B99A62]/45 bg-[#F3F0E8] text-[#102C26]'
-            : 'border-[#D9C6A5]/60 bg-[#071A17]/70 text-[#D9C6A5]'
-        }`}
-      >
-        EV
-      </span>
-      <span className="leading-none">
-        <span className={`block font-serif text-xl tracking-[0.28em] ${dark ? 'text-[#102C26]' : 'text-[#f6f1e7]'}`}>
-          EVAARA
-        </span>
-        <span className="mt-1 block text-[10px] font-semibold uppercase tracking-[0.45em] text-[#B99A62]">
-          Resort
-        </span>
-      </span>
+    <a
+      href="/"
+      className="group flex shrink-0 items-center"
+      aria-label="EVAARA Resort Home"
+    >
+      <img
+        src={logo}
+        alt="EVAARA Resort"
+        className="
+          block
+          h-auto
+          w-[125px]
+          object-contain
+          transition-transform
+          duration-500
+          group-hover:scale-[1.02]
+
+          sm:w-[145px]
+          md:w-[165px]
+          lg:w-[185px]
+          xl:w-[200px]
+        "
+      />
     </a>
   )
 }

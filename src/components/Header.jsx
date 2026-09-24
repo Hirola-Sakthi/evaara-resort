@@ -71,7 +71,7 @@ function Header({ currentPath }) {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-5">
-          <Logo dark={isScrolled} />
+          <Logo />
           <nav className={`hidden items-center gap-8 text-[15px] font-semibold lg:flex ${isScrolled ? 'text-[#102C26]/85' : 'text-[#f6f1e7]/90'}`}>
             {navItems.map((item) => (
               <a
