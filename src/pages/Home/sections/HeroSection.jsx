@@ -7,36 +7,41 @@ import bannerImage3 from "../../../assets/images/main-banner-3.webp";
 
 const slides = [
   {
-  image: bannerImage,
-  meta: "EVAARA RESORT · COORG, KARNATAKA",
-  title: "Wander Into The Heart of Coorg",
-  subtitle:
-    "Wake to mist-soft valleys, coffee-scented air, and quiet luxury woven into the wild beauty of Coorg.",
-  primaryCta: "Explore Our Rooms",
-  secondaryCta: "Discover EVAARA",
-},
+    image: bannerImage,
+    meta: "EVAARA RESORT · COORG, KARNATAKA",
+    title: "Wander Into The Heart of Coorg",
+    subtitle:
+      "Wake to mist-soft valleys, coffee-scented air, and quiet luxury woven into the wild beauty of Coorg.",
+    primaryCta: "Explore Our Rooms",
+    primaryLink: "/rooms",
+    secondaryCta: "Discover EVAARA",
+    secondaryLink: "/about",
+  },
 
-{
-  image: bannerImage2,
-  meta: "12 ACRES · COFFEE ESTATE",
-  title: "Escape Into The Heart of the Wild.",
-  subtitle:
-    "Leave the rush behind and discover misty mornings, coffee-scented trails, and unforgettable moments surrounded by the hills of Coorg.",
-  primaryCta: "View Experiences",
-  secondaryCta: "Explore Gallery",
-},
+  {
+    image: bannerImage2,
+    meta: "12 ACRES · COFFEE ESTATE",
+    title: "Escape Into The Heart of the Wild.",
+    subtitle:
+      "Leave the rush behind and discover misty mornings, coffee-scented trails, and unforgettable moments surrounded by the hills of Coorg.",
+    primaryCta: "View Experiences",
+    primaryLink: "/activities",
+    secondaryCta: "Explore Gallery",
+    secondaryLink: "/gallery",
+  },
 
-{
-  image: bannerImage3,
-  meta: "A QUIET RETREAT · COORG",
-  title: "Find Your Way Back To Nature.",
-  subtitle:
-    "Unwind in thoughtfully crafted spaces where forest views, warm hospitality, and the timeless rhythm of Coorg come together.",
-  primaryCta: "Discover EVAARA",
-  secondaryCta: "View Rooms",
-},
+  {
+    image: bannerImage3,
+    meta: "A QUIET RETREAT · COORG",
+    title: "Find Your Way Back To Nature.",
+    subtitle:
+      "Unwind in thoughtfully crafted spaces where forest views, warm hospitality, and the timeless rhythm of Coorg come together.",
+    primaryCta: "Discover EVAARA",
+    primaryLink: "/about",
+    secondaryCta: "View Rooms",
+    secondaryLink: "/rooms",
+  },
 ];
-
 const SLIDE_DURATION = 6500;
 
 const textContainer = {
@@ -166,13 +171,14 @@ function HeroSection() {
                 className="mt-8 flex flex-wrap items-center gap-4"
               >
                 <a
-                  href="/rooms"
+                  href={slide.primaryLink}
                   className="rounded-full bg-[#B99A62] px-7 py-3.5 text-sm font-bold text-[#071A17] transition-all duration-300 hover:scale-[1.03] hover:bg-[#D9C6A5]"
                 >
                   {slide.primaryCta}
                 </a>
+
                 <a
-                  href="/about"
+                  href={slide.secondaryLink}
                   className="rounded-full border border-[#F6F1E7]/40 bg-[#071A17]/10 px-7 py-3.5 text-sm font-semibold text-[#F6F1E7] backdrop-blur-sm transition-colors duration-300 hover:border-[#D9C6A5]"
                 >
                   {slide.secondaryCta}
