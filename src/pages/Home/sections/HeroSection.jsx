@@ -20,7 +20,7 @@ const slides = [
 
   {
     image: bannerImage2,
-    meta: "12 ACRES · COFFEE ESTATE",
+    meta: "COFFEE ESTATE",
     title: "Escape Into The Heart of the Wild.",
     subtitle:
       "Leave the rush behind and discover misty mornings, coffee-scented trails, and unforgettable moments surrounded by the hills of Coorg.",
