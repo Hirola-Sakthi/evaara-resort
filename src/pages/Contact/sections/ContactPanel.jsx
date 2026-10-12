@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   ArrowRight,
   CalendarDays,
@@ -12,6 +13,17 @@ import {
 } from 'lucide-react'
 
 import resortImage from '../../../assets/images/generated-coorg-resort-hero.png'
+import toast from 'react-hot-toast'
+
+const initialContactForm = {
+  name: '',
+  email: '',
+  phone: '',
+  checkIn: '',
+  checkOut: '',
+  guests: '',
+  message: '',
+}
 
 const contactItems = [
   {
@@ -71,7 +83,145 @@ const socialLinks = [
   },
 ]
 
+function openDatePicker(event) {
+  event.preventDefault()
+  event.currentTarget.showPicker?.()
+}
+
+
 function ContactPanel() {
+const [formData, setFormData] = useState(initialContactForm)
+const [isLoading, setIsLoading] = useState(false);
+
+ const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[6-9]\d{9}$/;
+
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email.trim())) {
+      errors.email = "Please enter a valid email address";
+    }
+
+    if (!formData.phone.trim()) {
+      errors.phone = "Phone is required";
+    } else if (!phoneRegex.test(formData.phone.trim())) {
+      errors.phone =
+        "Please enter a valid 10-digit phone number";
+    }
+
+    if (!formData.checkIn) {
+      errors.checkIn = "Check-in date is required";
+    }
+
+    if (!formData.checkOut) {
+      errors.checkOut = "Check-out date is required";
+    }
+
+    if (
+      formData.checkIn &&
+      formData.checkOut &&
+      formData.checkOut <= formData.checkIn
+    ) {
+      errors.checkOut =
+        "Check-out date must be after check-in date";
+    }
+
+        if (!formData.guests.trim()) {
+      errors.guests = "Number of guests is required";
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formErrors = validateForm();
+
+    if (Object.keys(formErrors).length > 0) {
+      const firstError = Object.values(formErrors)[0];
+
+      toast.error(firstError);
+
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        "http://localhost/vegkourt/commentform.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        },
+      );
+
+      console.log("Response:", response);
+      console.log("STATUS:", response.status);
+
+      if (!response.ok) {
+        throw new Error(
+          `Request failed with status ${response.status}`,
+        );
+      }
+
+      const responseData = await response.json();
+
+      console.log("PHP RESPONSE:", responseData);
+
+      if (responseData.status === "success") {
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          checkIn: "",
+          checkOut: "",
+          guests: "",
+          message: "",
+        });
+
+        toast.success(
+          "Your inquiry has been submitted successfully.",
+        );
+      } else {
+        console.error("Error:", responseData.message);
+
+        toast.error(
+          responseData.message ||
+            "Something went wrong. Please try again.",
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+
+      toast.error(
+        "An error occurred. Please try again later.",
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section className="relative overflow-hidden bg-[#F3F0E8] px-6 py-20 text-[#102C26] md:px-10 md:py-24 lg:px-16">
       <div className="pointer-events-none absolute -right-20 top-10 hidden h-64 w-64 rounded-full border border-[#B99A62]/15 lg:block" />
@@ -198,6 +348,7 @@ function ContactPanel() {
 
         <form
           data-scroll-reveal
+          onSubmit={handleSubmit}
           className="relative order-2 flex h-full flex-col overflow-hidden rounded-[24px] border border-[#B99A62]/24 bg-[#FBFAF6] p-6 shadow-2xl shadow-[#102C26]/10 md:p-7 lg:p-8"
         >
           <div className="absolute -right-24 -top-24 size-72 rounded-full bg-[#D9C6A5]/32 blur-3xl" />
@@ -245,9 +396,12 @@ function ContactPanel() {
                     />
 
                     <input
+                      name="name"
                       type="text"
                       aria-label="Name"
                       placeholder="Your full name"
+                      value={formData.name}
+                      onChange={handleInputChange}
                       required
                       className="h-full w-full bg-transparent text-sm text-[#102C26] outline-none placeholder:text-[#102C26]/38"
                     />
@@ -267,9 +421,12 @@ function ContactPanel() {
                     />
 
                     <input
+                      name="email"
                       type="email"
                       aria-label="Email"
                       placeholder="you@example.com"
+                      value={formData.email}
+                      onChange={handleInputChange}
                       required
                       className="h-full w-full bg-transparent text-sm text-[#102C26] outline-none placeholder:text-[#102C26]/38"
                     />
@@ -293,9 +450,12 @@ function ContactPanel() {
                     />
 
                     <input
+                      name="phone"
                       type="tel"
                       aria-label="Phone"
                       placeholder="+91 98765 43210"
+                      value={formData.phone}
+                      onChange={handleInputChange}
                       required
                       className="h-full w-full bg-transparent text-sm text-[#102C26] outline-none placeholder:text-[#102C26]/38"
                     />
@@ -315,9 +475,13 @@ function ContactPanel() {
                     />
 
                     <input
+                      name="checkIn"
                       type="date"
                       aria-label="Check In"
-                      className="h-full w-full cursor-pointer bg-transparent text-sm text-[#102C26] outline-none"
+                      value={formData.checkIn}
+                      onMouseDown={openDatePicker}
+                      onChange={handleInputChange}
+                      className="h-full w-full cursor-pointer appearance-none bg-transparent text-sm text-[#102C26] outline-none [&::-webkit-calendar-picker-indicator]:hidden"
                     />
                   </div>
                 </label>
@@ -339,9 +503,13 @@ function ContactPanel() {
                     />
 
                     <input
+                      name="checkOut"
                       type="date"
                       aria-label="Check Out"
-                      className="h-full w-full cursor-pointer bg-transparent text-sm text-[#102C26] outline-none"
+                      value={formData.checkOut}
+                      onMouseDown={openDatePicker}
+                      onChange={handleInputChange}
+                      className="h-full w-full cursor-pointer appearance-none bg-transparent text-sm text-[#102C26] outline-none [&::-webkit-calendar-picker-indicator]:hidden"
                     />
                   </div>
                 </label>
@@ -359,8 +527,10 @@ function ContactPanel() {
                     />
 
                     <select
+                      name="guests"
                       aria-label="Guests"
-                      defaultValue=""
+                      value={formData.guests}
+                      onChange={handleInputChange}
                       className="h-full w-full cursor-pointer bg-transparent text-sm text-[#102C26] outline-none"
                     >
                       <option value="" disabled>
@@ -418,10 +588,13 @@ function ContactPanel() {
                 </span>
 
                 <textarea
+                  name="message"
                   aria-label="Message"
                   rows="4"
                   required
                   placeholder="Tell us about your interests, special requests or any questions..."
+                  value={formData.message}
+                  onChange={handleInputChange}
                   className="mt-2 min-h-[112px] w-full resize-none rounded-[8px] border border-[#B99A62]/28 bg-[#F3F0E8]/42 px-4 py-4 text-sm text-[#102C26] outline-none transition placeholder:text-[#102C26]/38 focus:border-[#B99A62]"
                 />
               </label>
@@ -430,9 +603,10 @@ function ContactPanel() {
 
                 <button
                   type="submit"
+                  disabled={isLoading}
                   className="inline-flex w-fit cursor-pointer items-center gap-7 rounded-full bg-[#B99A62] px-7 py-3.5 text-sm font-bold text-white shadow-xl shadow-[#B99A62]/24 transition hover:bg-[#A8874E]"
                 >
-                  Send Message
+                  {isLoading ? 'Sending...' : 'Send Message'}
 
                   <ArrowRight
                     size={17}

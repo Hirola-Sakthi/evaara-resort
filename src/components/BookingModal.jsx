@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   CalendarDays,
   ChevronDown,
@@ -11,8 +12,28 @@ import {
 } from 'lucide-react'
 
 import modalImage from '../assets/images/generated-coorg-resort-hero.png'
+import toast from 'react-hot-toast'
 
-function Field({ label, icon: Icon, placeholder, type = 'text' }) {
+const initialBookingForm = {
+  name: '',
+  email: '',
+  phone: '',
+  checkIn: '',
+  checkOut: '',
+  guests: '',
+  message: '',
+}
+
+function openDatePicker(event) {
+  event.preventDefault()
+  event.currentTarget.showPicker?.()
+}
+
+function clearDateFocus(event) {
+  window.setTimeout(() => event.currentTarget.blur(), 0)
+}
+
+function Field({ label, icon: Icon, name, value, onChange, placeholder, type = 'text', required = false }) {
   return (
     <label className="block">
       <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.24em] text-[#102C26]">
@@ -21,9 +42,13 @@ function Field({ label, icon: Icon, placeholder, type = 'text' }) {
       <div className="flex h-10 items-center gap-3 rounded-[8px] border border-[#102C26]/12 bg-[#FFFDF8]/72 px-3 text-[#102C26] transition focus-within:border-[#B99A62] sm:h-11 sm:px-4">
         <Icon size={17} strokeWidth={1.55} className="shrink-0 text-[#536B50]" />
         <input
+          name={name}
           type={type}
           aria-label={label}
           placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          required={required}
           className="h-full min-w-0 flex-1 bg-transparent text-xs outline-none placeholder:text-[#102C26]/38 sm:text-sm"
         />
       </div>
@@ -31,7 +56,7 @@ function Field({ label, icon: Icon, placeholder, type = 'text' }) {
   )
 }
 
-function DateField({ label }) {
+function DateField({ label, name, value, onChange }) {
   return (
     <label className="block">
       <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.24em] text-[#102C26]">
@@ -40,16 +65,20 @@ function DateField({ label }) {
       <div className="flex h-10 items-center gap-3 rounded-[8px] border border-[#102C26]/12 bg-[#FFFDF8]/72 px-3 text-[#102C26] transition focus-within:border-[#B99A62] sm:h-11 sm:px-4">
         <CalendarDays size={17} strokeWidth={1.55} className="shrink-0 text-[#536B50]" />
         <input
+          name={name}
           type="date"
           aria-label={label}
-          className="h-full min-w-0 flex-1 bg-transparent text-xs text-[#102C26]/72 outline-none [color-scheme:light] sm:text-sm"
+          value={value}
+          onMouseDown={openDatePicker}
+          onChange={onChange}
+          className="h-full min-w-0 flex-1 appearance-none bg-transparent text-xs text-[#102C26]/72 outline-none [color-scheme:light] [&::-webkit-calendar-picker-indicator]:hidden sm:text-sm"
         />
       </div>
     </label>
   )
 }
 
-function GuestField() {
+function GuestField({ value, onChange }) {
   return (
     <label className="block">
       <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.24em] text-[#102C26]">
@@ -58,8 +87,10 @@ function GuestField() {
       <div className="flex h-10 items-center gap-3 rounded-[8px] border border-[#102C26]/12 bg-[#FFFDF8]/72 px-3 text-[#102C26] transition focus-within:border-[#B99A62] sm:h-11 sm:px-4">
         <Users size={17} strokeWidth={1.55} className="shrink-0 text-[#536B50]" />
         <select
+          name="guests"
           aria-label="Guests"
-          defaultValue="2 Guests"
+          value={value}
+          onChange={onChange}
           className="h-full min-w-0 flex-1 appearance-none bg-transparent text-xs text-[#102C26]/72 outline-none sm:text-sm"
         >
           <option>1 Guest</option>
@@ -76,6 +107,139 @@ function GuestField() {
 }
 
 function BookingModal({ isOpen, onClose }) {
+const [formData, setFormData] = useState(initialBookingForm)
+const [isLoading, setIsLoading] = useState(false);
+
+ const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^[6-9]\d{9}$/;
+
+    if (!formData.name.trim()) {
+      errors.name = "Name is required";
+    }
+
+    if (!formData.email.trim()) {
+      errors.email = "Email is required";
+    } else if (!emailRegex.test(formData.email.trim())) {
+      errors.email = "Please enter a valid email address";
+    }
+
+    if (!formData.phone.trim()) {
+      errors.phone = "Phone is required";
+    } else if (!phoneRegex.test(formData.phone.trim())) {
+      errors.phone =
+        "Please enter a valid 10-digit phone number";
+    }
+
+    if (!formData.checkIn) {
+      errors.checkIn = "Check-in date is required";
+    }
+
+    if (!formData.checkOut) {
+      errors.checkOut = "Check-out date is required";
+    }
+
+    if (
+      formData.checkIn &&
+      formData.checkOut &&
+      formData.checkOut <= formData.checkIn
+    ) {
+      errors.checkOut =
+        "Check-out date must be after check-in date";
+    }
+
+        if (!formData.guests.trim()) {
+      errors.guests = "Number of guests is required";
+    }
+
+    return errors;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formErrors = validateForm();
+
+    if (Object.keys(formErrors).length > 0) {
+      const firstError = Object.values(formErrors)[0];
+
+      toast.error(firstError);
+
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch(
+        "http://localhost/vegkourt/commentform.php",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        },
+      );
+
+      console.log("Response:", response);
+      console.log("STATUS:", response.status);
+
+      if (!response.ok) {
+        throw new Error(
+          `Request failed with status ${response.status}`,
+        );
+      }
+
+      const responseData = await response.json();
+
+      console.log("PHP RESPONSE:", responseData);
+
+      if (responseData.status === "success") {
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          checkIn: "",
+          checkOut: "",
+          guests: "",
+          message: "",
+        });
+
+        toast.success(
+          "Your inquiry has been submitted successfully.",
+        );
+        onClose();  
+      } else {
+        console.error("Error:", responseData.message);
+
+        toast.error(
+          responseData.message ||
+            "Something went wrong. Please try again.",
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+
+      toast.error(
+        "An error occurred. Please try again later.",
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   if (!isOpen) {
     return null
   }
@@ -146,14 +310,49 @@ function BookingModal({ isOpen, onClose }) {
             </p>
           </div>
 
-          <form className="border-y border-[#102C26]/8 py-4 sm:py-5">
+          <form onSubmit={handleSubmit} className="border-y border-[#102C26]/8 py-4 sm:py-5">
             <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-              <Field label="Full Name *" icon={User} placeholder="Your full name" />
-              <Field label="Email Address *" icon={Mail} placeholder="you@example.com" type="email" />
-              <Field label="Phone Number *" icon={Phone} placeholder="+91 98765 43210" />
-              <DateField label="Check-In Date" />
-              <DateField label="Check-Out Date" />
-              <GuestField />
+              <Field
+                label="Full Name *"
+                icon={User}
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="Your full name"
+                required
+              />
+              <Field
+                label="Email Address *"
+                icon={Mail}
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="you@example.com"
+                type="email"
+                required
+              />
+              <Field
+                label="Phone Number *"
+                icon={Phone}
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="+91 98765 43210"
+                required
+              />
+              <DateField
+                label="Check-In Date"
+                name="checkIn"
+                value={formData.checkIn}
+                onChange={handleInputChange}
+              />
+              <DateField
+                label="Check-Out Date"
+                name="checkOut"
+                value={formData.checkOut}
+                onChange={handleInputChange}
+              />
+              <GuestField value={formData.guests} onChange={handleInputChange} />
             </div>
 
             <label className="mt-3 block sm:mt-4">
@@ -163,21 +362,25 @@ function BookingModal({ isOpen, onClose }) {
               <div className="flex min-h-[76px] gap-3 rounded-[8px] border border-[#102C26]/12 bg-[#FFFDF8]/72 px-3 py-3 transition focus-within:border-[#B99A62] sm:min-h-[84px] sm:px-4">
                 <MessageCircle size={17} strokeWidth={1.55} className="mt-1 shrink-0 text-[#536B50]" />
                 <textarea
+                  name="message"
                   aria-label="Message or special request"
                   maxLength="500"
                   placeholder="Tell us about your preferences, requirements or any special requests..."
+                  value={formData.message}
+                  onChange={handleInputChange}
                   className="min-h-[50px] flex-1 resize-none bg-transparent text-xs outline-none placeholder:text-[#102C26]/38 sm:min-h-[58px] sm:text-sm"
                 />
-                <span className="self-end text-[10px] text-[#102C26]/38">0/500</span>
+                <span className="self-end text-[10px] text-[#102C26]/38">{formData.message.length}/500</span>
               </div>
             </label>
 
             <button
-              type="button"
+              type="submit"
+              disabled={isLoading}
               className="mt-4 inline-flex h-11 w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-[#B99A62] px-6 text-xs font-bold uppercase tracking-[0.24em] text-[#071A17] shadow-[0_18px_45px_rgba(185,154,98,0.28)] transition hover:bg-[#D9C6A5] sm:mt-5 sm:h-12 sm:gap-4 sm:px-7 sm:tracking-[0.32em]"
             >
               <Send size={16} strokeWidth={1.55} />
-              Send Enquiry
+              {isLoading ? 'Sending...' : 'Send Enquiry'}
             </button>
           </form>
         </div>
